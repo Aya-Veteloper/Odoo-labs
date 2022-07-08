@@ -1,0 +1,46 @@
+<odoo>
+    <data>
+        <record id ="hms_patient_form" model="ir.ui.view">
+             <field name="name">patients form</field>
+            <field name="model">hms.patient</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="fname" />
+                            <field name="lname"/>
+                            <field name="age"/>
+                            <field name="Birthday"/>
+                            <field name="image"/>
+                            <field name="address"/>
+                        </group>
+                        <group>
+                            <field name="department_id" domain="[('Is_opened', '=', True)]"/>
+                            <field name="department_capacity"/>
+                            <field name="doctors_id"/>
+                        </group>
+                         <group>
+                        <field name="history"/>
+                        </group>
+                        <group>
+                            <field name="blood"/>
+                            <field name="cr_ratio"/>
+                        </group>
+                        <group>
+                            <field name="state"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="hms_hospital_action" model="ir.actions.act_window">
+           <field name="name">patients</field>
+            <field name="res_model">hms.patient</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <menuitem id="hospital_root_menu" name="Hospital Management"/>
+        <menuitem id="hospital_patient_menu" name="patients"
+        parent="hospital_root_menu" action="hms_hospital_action"/>
+
+    </data>
+</odoo>
